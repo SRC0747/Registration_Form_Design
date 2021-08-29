@@ -1,11 +1,13 @@
 package com.registrationformdesign;
+import org.junit.jupiter.api.Test;
+
 import java.util.regex.*;
 //import java.util.regex.Matcher;
 //import java.util.regex.Pattern;
 
 public class RegistrationForm {
-/ Function to validate the First Username
-    public static boolean isValidFirstUsername(String name)
+// Function to validate the First Username
+        public static boolean isValidFirstUsername(String name)
     {
 
         // Regex to check valid username.
@@ -61,6 +63,14 @@ public class RegistrationForm {
         Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
         Matcher m = p.matcher("foobar@gmail.com");
     }
+
+    //Checking the valid 10-digit mobile number
+    @Test
+    public boolean whenMatchesTenDigitsNumber_thenCorrect() {
+        Pattern pattern = Pattern.compile("^\\d{10}$");
+        Matcher matcher = pattern.matcher("91 7523654895");
+        assertTrue(matcher.matches());
+    }
     public static void main(String[] args)
     {
 
@@ -92,5 +102,8 @@ public class RegistrationForm {
         //Checking Email-id.
         String email = "sampritirc@gmail.com";
         System.out.println(isValidEmail(email));
+
+        //Checking Valid Mobile Number.
+        System.out.println(whenMatchesTenDigitsNumber_thenCorrect());
     }
 }
