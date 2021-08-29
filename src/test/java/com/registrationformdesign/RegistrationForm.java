@@ -6,9 +6,8 @@ import java.util.regex.*;
 //import java.util.regex.Pattern;
 
 public class RegistrationForm {
-// Function to validate the First Username
-        public static boolean isValidFirstUsername(String name)
-    {
+    // Function to validate the First Username
+    public static boolean isValidFirstUsername(String name) {
 
         // Regex to check valid username.
         String regex = "^[Cap]\\w{5,29}[A-Za-z]$";
@@ -33,8 +32,7 @@ public class RegistrationForm {
     }
 
     // Function to validate the Second Username
-    public static boolean isValidLastUsername(String name)
-    {
+    public static boolean isValidLastUsername(String name) {
 
         // Regex to check valid username.
         String regex = "^[Cap]\\w{5,29}[A-Za-z]$";
@@ -57,9 +55,9 @@ public class RegistrationForm {
         // matched the ReGex
         return m.matches();
     }
+
     //Check the Valid Email-id.
-    public static boolean isValidEmail(String name)
-    {
+    public static boolean isValidEmail(String name) {
         Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
         Matcher m = p.matcher("foobar@gmail.com");
     }
@@ -78,8 +76,34 @@ public class RegistrationForm {
         Pattern pattern = Pattern.compile("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
         Matcher matcher = pattern.matcher("SrcSrkKolkata");
     }
-    public static void main(String[] args)
-    {
+
+    //Junit Happy and Sad Test Cases.
+    @Test
+    public void happy_sad_Test() {
+        String fname = "Cap23aSjk";
+        boolean fn = isValidFirstUsername(fname);
+        String lname = "Kolkata22Cap";
+        boolean ln = isValidLastUsername(lname);
+        String email = "sampritirc@gmail.com";
+        boolean mid = isValidEmail(email);
+        String ph_no = "91 9674218589";
+        boolean ph = whenMatchesTenDigitsNumber_thenCorrect(ph_no);
+        String password = "Sampriti07@47Kolkata";
+        boolean p = isValidPassword(password);
+        if (fn && ln && mid && ph && p) {
+            System.out.println("Happy Test Cases.");
+        }
+        if (fn || ln || mid || ph || p) {
+            System.out.println("Sad Test Cases.");
+        }
+    }
+
+    //JUnit Parameterised Test
+    @Test
+    public void parameterised_Test(String name) {
+        public void happy_sad_Test();
+    }
+    public static void main(String[] args) {
 
         // Test Case: 1
         String str1 = "Geeksforgeeks";
@@ -143,5 +167,13 @@ public class RegistrationForm {
         // by a single space.
 
         System.out.println(output);
+
+        //Checking Junit Happy or Sad Test case.
+        RegistrationForm obj = new RegistrationForm();
+        obj.happy_sad_Test();
+
+        //Checking JUnit Parameterised Test Cases.
+        RegistrationForm p_obj = new RegistrationForm();
+        p_obj.parameterised_Test(String name);
     }
 }
