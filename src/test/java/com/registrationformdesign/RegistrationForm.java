@@ -55,6 +55,12 @@ public class RegistrationForm {
         // matched the ReGex
         return m.matches();
     }
+    //Check the Valid Email-id.
+    public static boolean isValidEmail(String name)
+    {
+        Pattern p = Pattern.compile("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+        Matcher m = p.matcher("foobar@gmail.com");
+    }
     public static void main(String[] args)
     {
 
@@ -82,5 +88,9 @@ public class RegistrationForm {
         // Test Case: 3
         String str3 = "CapRiya526Biny";
         System.out.println(isValidLastUsername(str3));
+
+        //Checking Email-id.
+        String email = "sampritirc@gmail.com";
+        System.out.println(isValidEmail(email));
     }
 }
